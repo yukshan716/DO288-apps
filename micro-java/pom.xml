@@ -17,7 +17,8 @@
     <quarkus.platform.group-id>com.redhat.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.11.6.Final-redhat-00001</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <!-- Property to force using Deployments over DeploymentConfig objects goes here. -->
+    <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>    
+<!-- Property to force using Deployments over DeploymentConfig objects goes here. -->
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -75,7 +76,7 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
-    <plugins>
+    <plugins>	      
       <plugin>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
@@ -105,7 +106,12 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-      <!-- Adding the jkube plugin configuration here -->
+      <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>openshift-maven-plugin</artifactId>
+        <version>1.2.0</version>
+      </plugin>	
+<!-- Adding the jkube plugin configuration here -->
     </plugins>
   </build>
   <profiles>
